@@ -30,12 +30,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.security.web.savedrequest.RequestCacheAwareFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import javax.annotation.PostConstruct;
 import java.util.Collections;
 import java.util.UUID;
 
@@ -64,12 +62,6 @@ public class UrbanCasAutoConfiguration {
     private final static String CAS_LOGOUT_URL = "/logout/cas";
 
     private final static String CAS_LOGIN_URL = "/login/cas";
-
-    @PostConstruct
-    public void init() {
-        this.urbanCasProperties.init();
-    }
-
 
     @Bean
     @Order(10)
@@ -110,12 +102,6 @@ public class UrbanCasAutoConfiguration {
         casAuthenticationProvider.setAuthenticationUserDetailsService(authenticationUserDetailsService());
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         return casAuthenticationProvider;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(name = "casSessionAuthenticationStrategy")
-    public SessionAuthenticationStrategy casSessionAuthenticationStrategy() {
-        return new NullAuthenticatedSessionStrategy();
     }
 
     public AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService() {

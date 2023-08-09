@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.unicom.urban.spring.boot.UrbanCasAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.unicom.urban.spring.boot.UrbanCasAutoConfiguration,\
+  com.unicom.urban.spring.boot.UrbanCasSessionAuthenticationStrategyAutoConfiguration

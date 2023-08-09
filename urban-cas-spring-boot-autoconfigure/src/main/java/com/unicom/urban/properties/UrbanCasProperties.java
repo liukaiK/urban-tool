@@ -3,12 +3,13 @@ package com.unicom.urban.properties;
 import com.unicom.urban.common.util.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Setter
 @Getter
 @ConfigurationProperties(prefix = "urban.cas")
-public class UrbanCasProperties {
+public class UrbanCasProperties implements InitializingBean {
 
     /**
      * service地址
@@ -30,11 +31,11 @@ public class UrbanCasProperties {
      */
     private String successUrl;
 
-    public void init() {
+    @Override
+    public void afterPropertiesSet() throws Exception {
         if (!StringUtils.hasText(this.loginUrl)) {
             this.loginUrl = this.ticketUrl + "/login";
         }
-
     }
 
 }
