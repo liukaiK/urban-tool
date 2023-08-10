@@ -7,7 +7,6 @@ import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -52,7 +51,6 @@ public class UrbanCasAutoConfiguration {
     private UrbanCasProperties urbanCasProperties;
 
     @Autowired
-    @Qualifier("casUserDetailsService")
     private UserDetailsService casUserDetailsService;
 
     @Autowired
