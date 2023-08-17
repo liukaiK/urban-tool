@@ -10,7 +10,7 @@ public class SysConstants {
 
     public static final String WHERE_DELETE = DELETED_FILED + "=" + DELETED_VALUE;
 
-    public static final String SNOW_CLASS = BASE_PACKAGE + ".id.SnowIdGenerator";
+    public static final String SNOW_CLASS = BASE_PACKAGE + ".common.id.SnowIdGenerator";
 
     /**
      * 当前登录人的主体信息

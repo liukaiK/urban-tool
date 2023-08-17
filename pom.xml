@@ -39,6 +39,7 @@
         <springboot.version>2.7.11</springboot.version>
         <spring.cloud.version>2021.0.4</spring.cloud.version>
         <spring.cloud.alibaba.version>2021.0.5.0</spring.cloud.alibaba.version>
+        <hibernate-jpamodelgen.version>5.6.9.Final</hibernate-jpamodelgen.version>
         <userAgentUtils.version>1.21</userAgentUtils.version>
         <hutool.version>5.8.20</hutool.version>
         <os-maven-plugin.version>1.7.0</os-maven-plugin.version>
