@@ -116,6 +116,7 @@ public class UrbanCasAutoConfiguration {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
         casAuthenticationEntryPoint.setLoginUrl(urbanCasProperties.getLoginUrl());
         casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+        casAuthenticationEntryPoint.setEncodeServiceUrlWithSessionId(false);
         return casAuthenticationEntryPoint;
     }
 

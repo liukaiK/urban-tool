@@ -22,7 +22,7 @@ public class CasController {
     @Autowired
     private UrbanCasProperties urbanCasProperties;
 
-    private boolean encodeServiceUrlWithSessionId = true;
+    private boolean encodeServiceUrlWithSessionId = false;
 
 
     /**
