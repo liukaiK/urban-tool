@@ -4,7 +4,7 @@ import com.unicom.urban.common.constant.SysConstants;
 import com.unicom.urban.constant.SecurityConstant;
 import com.unicom.urban.properties.UrbanCasProperties;
 import org.jasig.cas.client.session.SingleSignOutFilter;
-import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
+import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -131,7 +131,7 @@ public class UrbanCasAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(TicketValidator.class)
     public TicketValidator ticketValidator() {
-        return new Cas20ServiceTicketValidator(urbanCasProperties.getTicketUrl());
+        return new Cas30ServiceTicketValidator(urbanCasProperties.getTicketUrl());
     }
 
 }
