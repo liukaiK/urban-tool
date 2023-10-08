@@ -23,8 +23,6 @@ import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
-import org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -51,7 +49,7 @@ public class UrbanCasAutoConfiguration {
     private UrbanCasProperties urbanCasProperties;
 
     @Autowired
-    private UserDetailsService casUserDetailsService;
+    private AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService;
 
     @Autowired
     private LogoutHandler casLogoutHandler;
@@ -99,15 +97,9 @@ public class UrbanCasAutoConfiguration {
         CasAuthenticationProvider casAuthenticationProvider = new CasAuthenticationProvider();
         casAuthenticationProvider.setTicketValidator(ticketValidator());
         casAuthenticationProvider.setKey(UUID.randomUUID().toString());
-        casAuthenticationProvider.setAuthenticationUserDetailsService(authenticationUserDetailsService());
+        casAuthenticationProvider.setAuthenticationUserDetailsService(authenticationUserDetailsService);
         casAuthenticationProvider.setServiceProperties(serviceProperties());
         return casAuthenticationProvider;
-    }
-
-    public AuthenticationUserDetailsService<CasAssertionAuthenticationToken> authenticationUserDetailsService() {
-        UserDetailsByNameServiceWrapper<CasAssertionAuthenticationToken> authenticationUserDetailsService = new UserDetailsByNameServiceWrapper<>();
-        authenticationUserDetailsService.setUserDetailsService(casUserDetailsService);
-        return authenticationUserDetailsService;
     }
 
     @Bean
