@@ -8,6 +8,7 @@ import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -43,6 +44,7 @@ import java.util.UUID;
 @Configuration
 @ComponentScan(basePackages = SysConstants.BASE_PACKAGE)
 @EnableConfigurationProperties(UrbanCasProperties.class)
+@ConditionalOnProperty(name = "urban.cas.enable", matchIfMissing = true)
 public class UrbanCasAutoConfiguration {
 
     @Autowired

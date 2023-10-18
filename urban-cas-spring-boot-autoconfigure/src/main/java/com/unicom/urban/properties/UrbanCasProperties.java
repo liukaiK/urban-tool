@@ -12,6 +12,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class UrbanCasProperties implements InitializingBean {
 
     /**
+     * 是否启用城管CAS认证
+     */
+    private boolean enable;
+
+    /**
      * service地址
      */
     private String service;
