@@ -61,15 +61,21 @@ public class UrbanCasAutoConfiguration {
 
     private final static String CAS_LOGOUT_URL = "/logout/cas";
 
-    private final static String CAS_LOGIN_URL = "/login/cas";
+    /**
+     * CAS登录成功后，带着ticket访问这个地址
+     */
+    private final static String URBAN_CAS_FILTER_PROCESSES_URL = "/login/cas";
 
+    /**
+     * 城管的CAS配置
+     */
     @Bean
     @Order(10)
     @ConditionalOnMissingBean(name = SecurityConstant.CAS_BEAN_NAME)
-    public SecurityFilterChain casSecurityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain urbanCasSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .requestMatchers()
-                .antMatchers(HttpMethod.GET, SecurityConstant.REDIRECT_URL, CAS_LOGIN_URL, CAS_LOGOUT_URL)
+                .antMatchers(HttpMethod.GET, SecurityConstant.REDIRECT_URL, URBAN_CAS_FILTER_PROCESSES_URL, CAS_LOGOUT_URL)
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
@@ -87,6 +93,7 @@ public class UrbanCasAutoConfiguration {
     @ConditionalOnMissingBean(CasAuthenticationFilter.class)
     public CasAuthenticationFilter casAuthenticationFilter() {
         CasAuthenticationFilter casAuthenticationFilter = new CasAuthenticationFilter();
+        casAuthenticationFilter.setFilterProcessesUrl(URBAN_CAS_FILTER_PROCESSES_URL);
         casAuthenticationFilter.setAuthenticationManager(new ProviderManager(Collections.singletonList(casAuthenticationProvider())));
         casAuthenticationFilter.setAuthenticationSuccessHandler(new SimpleUrlAuthenticationSuccessHandler(urbanCasProperties.getSuccessUrl()));
         casAuthenticationFilter.setSessionAuthenticationStrategy(casSessionAuthenticationStrategy);
