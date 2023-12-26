@@ -4,7 +4,10 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author liukai
@@ -63,6 +66,28 @@ public abstract class LocalDateTimeUtil {
         LocalDate now = LocalDate.now();
         Month endMonthOfQuarter = Month.of(now.getMonth().firstMonthOfQuarter().getValue() + 2);
         return LocalDateTime.of(now.getYear(), endMonthOfQuarter, endMonthOfQuarter.length(now.isLeapYear()), 23, 59, 59);
+    }
+
+    /**
+     * 计算经过了哪些日期
+     *
+     * @param startDateTime 开始时间
+     * @param endDateTime   结束时间
+     */
+    public static List<LocalDate> between(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        LocalDate startDate = startDateTime.toLocalDate();
+        LocalDate endDate = endDateTime.toLocalDate();
+        List<LocalDate> localDates = new ArrayList<>();
+        // 如果为同一天
+        if (startDate.equals(endDate)) {
+            localDates.add(startDate);
+            return localDates;
+        }
+        long day = startDate.until(endDate, ChronoUnit.DAYS);
+        for (long i = 0; i <= day; i++) {
+            localDates.add(startDate.plusDays(i));
+        }
+        return localDates;
     }
 
 }

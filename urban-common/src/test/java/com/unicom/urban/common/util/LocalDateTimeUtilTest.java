@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class LocalDateTimeUtilTest {
 
@@ -45,6 +46,14 @@ public class LocalDateTimeUtilTest {
         } else {
             Assert.assertEquals(localDateTime, LocalDateTime.of(LocalDate.now().getYear(), 12, dayOfMonth, hour, minute, second));
         }
+    }
+
+    @Test
+    public void betweenTest() {
+        LocalDateTime startDateTime = LocalDateTime.of(2023, 1, 20, 10, 31, 10);
+        LocalDateTime endDateTime = LocalDateTime.of(2023, 1, 26, 23, 59, 59);
+        List<LocalDate> betweenDate = LocalDateTimeUtil.between(startDateTime, endDateTime);
+        Assert.assertEquals(7, betweenDate.size());
     }
 
 }
