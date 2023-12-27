@@ -17,6 +17,7 @@
         <module>urban-cas-spring-boot-starter</module>
         <module>urban-cas-spring-boot-autoconfigure</module>
         <module>urban-common</module>
+        <module>urban-file</module>
     </modules>
 
 
@@ -41,6 +42,7 @@
         <hutool.version>5.8.20</hutool.version>
         <os-maven-plugin.version>1.7.0</os-maven-plugin.version>
         <guava.version>30.0-jre</guava.version>
+        <fastdfs-client.version>1.27.2</fastdfs-client.version>
     </properties>
 
     <dependencyManagement>
@@ -67,6 +69,12 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>urban-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>urban-file</artifactId>
                 <version>${revision}</version>
             </dependency>
 
@@ -110,6 +118,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastdfs-client.version}</version>
             </dependency>
 
         </dependencies>
