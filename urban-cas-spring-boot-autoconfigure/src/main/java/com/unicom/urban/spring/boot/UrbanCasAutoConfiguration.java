@@ -3,7 +3,6 @@ package com.unicom.urban.spring.boot;
 import com.unicom.urban.common.constant.SysConstants;
 import com.unicom.urban.constant.SecurityConstant;
 import com.unicom.urban.properties.UrbanCasProperties;
-import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,6 @@ import org.springframework.security.core.userdetails.AuthenticationUserDetailsSe
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.security.web.savedrequest.RequestCacheAwareFilter;
@@ -83,15 +81,12 @@ public class UrbanCasAutoConfiguration {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher(CAS_LOGOUT_URL, HttpMethod.GET.name())).logoutSuccessUrl(urbanCasProperties.getTicketUrl() + "/logout").addLogoutHandler(casLogoutHandler)
                 .and()
                 .csrf().disable()
-                .addFilterAt(new SingleSignOutFilter(), LogoutFilter.class)
                 .addFilterBefore(casAuthenticationFilter(), RequestCacheAwareFilter.class)
                 .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
         return http.build();
     }
 
-    @Bean
-    @ConditionalOnMissingBean(CasAuthenticationFilter.class)
-    public CasAuthenticationFilter casAuthenticationFilter() {
+    private CasAuthenticationFilter casAuthenticationFilter() {
         CasAuthenticationFilter casAuthenticationFilter = new CasAuthenticationFilter();
         casAuthenticationFilter.setFilterProcessesUrl(URBAN_CAS_FILTER_PROCESSES_URL);
         casAuthenticationFilter.setAuthenticationManager(new ProviderManager(Collections.singletonList(casAuthenticationProvider())));

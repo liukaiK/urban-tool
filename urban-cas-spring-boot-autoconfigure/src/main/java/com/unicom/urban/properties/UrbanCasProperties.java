@@ -27,9 +27,14 @@ public class UrbanCasProperties implements InitializingBean {
     private String ticketUrl;
 
     /**
-     * cas的登录地址
+     * cas的登录地址 例如：http://127.0.0.1:8080/cas/login
      */
     private String loginUrl;
+
+    /**
+     * cas的退出地址 例如：http://127.0.0.1:8080/cas/logout
+     */
+//    private String logoutUrl;
 
     /**
      * 认证成功之后的跳转地址
@@ -37,7 +42,7 @@ public class UrbanCasProperties implements InitializingBean {
     private String successUrl;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         if (!StringUtils.hasText(this.loginUrl)) {
             this.loginUrl = this.ticketUrl + "/login";
         }
