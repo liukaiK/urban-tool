@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity<ID extends Serializable> implements Persistable<ID> {
 
     @Id
+    @Column(nullable = false, columnDefinition = "bigint unsigned")
     @GeneratedValue(generator = "id")
     @GenericGenerator(name = "id", strategy = SysConstants.SNOW_CLASS)
     protected ID id;

@@ -1,5 +1,6 @@
 package com.unicom.urban.common.entity;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,7 +11,8 @@ public abstract class DeletableEntity<ID extends Serializable> extends BaseEntit
     /**
      * 数据是否已被删除
      */
-    private Boolean deleted;
+    @Column(nullable = false, columnDefinition = "bigint unsigned")
+    private Long deleted;
 
     private LocalDateTime deletedTime;
 
