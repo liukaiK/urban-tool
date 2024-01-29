@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseEntity<ID extends Serializable> implements Persistable<ID> {
+public abstract class BaseEntity<ID extends Serializable> implements Persistable<ID>, Serializable {
 
     @Id
     @Column(nullable = false, columnDefinition = "bigint unsigned")

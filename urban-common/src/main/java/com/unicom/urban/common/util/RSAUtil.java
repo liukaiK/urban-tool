@@ -21,7 +21,7 @@ public class RSAUtil {
      * 加密
      */
     public static String encrypt(String str) {
-        return RSA.encryptBcd(str, KeyType.PublicKey);
+        return RSA.encryptBase64(str, KeyType.PublicKey);
     }
 
     /**

@@ -12,7 +12,7 @@ public abstract class DeletableEntity<ID extends Serializable> extends BaseEntit
      * 数据是否已被删除
      */
     @Column(nullable = false, columnDefinition = "bigint unsigned")
-    private Long deleted;
+    private Long deleted = 0L;
 
     private LocalDateTime deletedTime;
 
