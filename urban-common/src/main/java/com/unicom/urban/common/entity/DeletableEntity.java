@@ -16,4 +16,9 @@ public abstract class DeletableEntity<ID extends Serializable> extends BaseEntit
 
     private LocalDateTime deletedTime;
 
+    protected void remove() {
+        this.deleted = (Long) getId();
+        this.deletedTime = LocalDateTime.now();
+    }
+
 }
