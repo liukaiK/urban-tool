@@ -55,7 +55,13 @@ public class UrbanCasAutoConfiguration {
     private LogoutHandler casLogoutHandler;
 
     @Autowired
+    private ServiceProperties serviceProperties;
+
+    @Autowired
     private SessionAuthenticationStrategy casSessionAuthenticationStrategy;
+
+    @Autowired
+    private AuthenticationEntryPoint casAuthenticationEntryPoint;
 
     private final static String CAS_LOGOUT_URL = "/logout/cas";
 
@@ -82,7 +88,7 @@ public class UrbanCasAutoConfiguration {
                 .and()
                 .csrf().disable()
                 .addFilterBefore(casAuthenticationFilter(), RequestCacheAwareFilter.class)
-                .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint());
+                .exceptionHandling().authenticationEntryPoint(casAuthenticationEntryPoint);
         return http.build();
     }
 
@@ -102,27 +108,20 @@ public class UrbanCasAutoConfiguration {
         casAuthenticationProvider.setTicketValidator(ticketValidator());
         casAuthenticationProvider.setKey(UUID.randomUUID().toString());
         casAuthenticationProvider.setAuthenticationUserDetailsService(authenticationUserDetailsService);
-        casAuthenticationProvider.setServiceProperties(serviceProperties());
+        casAuthenticationProvider.setServiceProperties(serviceProperties);
         return casAuthenticationProvider;
     }
 
     @Bean
-    @ConditionalOnMissingBean(CasAuthenticationEntryPoint.class)
-    public AuthenticationEntryPoint casAuthenticationEntryPoint() {
+    @ConditionalOnMissingBean(name = "casAuthenticationEntryPoint")
+    public AuthenticationEntryPoint casAuthenticationEntryPoint(UrbanCasProperties urbanCasProperties, ServiceProperties serviceProperties) {
         CasAuthenticationEntryPoint casAuthenticationEntryPoint = new CasAuthenticationEntryPoint();
         casAuthenticationEntryPoint.setLoginUrl(urbanCasProperties.getLoginUrl());
-        casAuthenticationEntryPoint.setServiceProperties(serviceProperties());
+        casAuthenticationEntryPoint.setServiceProperties(serviceProperties);
         casAuthenticationEntryPoint.setEncodeServiceUrlWithSessionId(false);
         return casAuthenticationEntryPoint;
     }
 
-    @Bean
-    @ConditionalOnMissingBean(ServiceProperties.class)
-    public ServiceProperties serviceProperties() {
-        ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService(urbanCasProperties.getService());
-        return serviceProperties;
-    }
 
     @Bean
     @ConditionalOnMissingBean(TicketValidator.class)

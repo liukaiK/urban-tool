@@ -17,14 +17,23 @@ public class AESUtil {
      * 加密
      */
     public static String encrypt(String str) {
-        return AES.encryptHex(str);
+        if (StringUtils.hasText(str)) {
+            return AES.encryptHex(str);
+        } else {
+            return null;
+        }
+
     }
 
     /**
      * 解密
      */
     public static String decrypt(String str) {
-        return AES.decryptStr(str, StandardCharsets.UTF_8);
+        if (StringUtils.hasText(str)) {
+            return AES.decryptStr(str, StandardCharsets.UTF_8);
+        } else {
+            return null;
+        }
     }
 
 }

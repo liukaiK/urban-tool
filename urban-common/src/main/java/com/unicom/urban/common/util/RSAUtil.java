@@ -21,14 +21,23 @@ public class RSAUtil {
      * 加密
      */
     public static String encrypt(String str) {
-        return RSA.encryptBase64(str, KeyType.PublicKey);
+        if (StringUtils.hasText(str)) {
+            return RSA.encryptBase64(str, KeyType.PublicKey);
+        } else {
+            return null;
+        }
+
     }
 
     /**
      * 解密
      */
     public static String decrypt(String str) {
-        return RSA.decryptStr(str, KeyType.PrivateKey);
+        if (StringUtils.hasText(str)) {
+            return RSA.decryptStr(str, KeyType.PrivateKey);
+        } else {
+            return null;
+        }
     }
 
 }
