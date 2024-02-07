@@ -1,6 +1,5 @@
 package com.unicom.urban.common.entity;
 
-import cn.hutool.core.convert.Convert;
 import cn.hutool.core.date.DatePattern;
 import com.unicom.urban.common.constant.SysConstants;
 import org.hibernate.annotations.GenericGenerator;
@@ -77,8 +76,11 @@ public abstract class BaseEntity<ID extends Serializable> implements Persistable
         return id;
     }
 
+    /**
+     * 这个方法会触发懒加载
+     */
     public String getIdStr() {
-        return Convert.toStr(this.id);
+        return String.valueOf(this.id);
     }
 
 }
