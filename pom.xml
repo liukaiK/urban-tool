@@ -18,6 +18,7 @@
         <module>urban-cas-spring-boot-autoconfigure</module>
         <module>urban-common</module>
         <module>urban-file</module>
+        <module>urban-mtce</module>
     </modules>
 
 
