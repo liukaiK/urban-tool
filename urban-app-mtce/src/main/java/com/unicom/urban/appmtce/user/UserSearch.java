@@ -14,8 +14,6 @@ public class UserSearch {
 
     private String gender;
 
-    private String telMobile;
-
     private String status;
 
     private String orgId;
@@ -86,14 +84,6 @@ public class UserSearch {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getTelMobile() {
-        return telMobile;
-    }
-
-    public void setTelMobile(String telMobile) {
-        this.telMobile = telMobile;
     }
 
     public String getStatus() {

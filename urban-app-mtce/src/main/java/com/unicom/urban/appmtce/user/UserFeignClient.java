@@ -12,7 +12,7 @@ public interface UserFeignClient {
     @RequestMapping(method = RequestMethod.GET, value = "/v1/users")
     RestResponsePage<UserResponse> search(@SpringQueryMap UserSearch userSearch, Pageable pageable);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/v1/users/{id}")
-    UserResponse find(@PathVariable String id);
+    @RequestMapping(method = RequestMethod.GET, value = "/v1/users/{id}")
+    UserResponse find(@PathVariable("id") String id);
 
 }
