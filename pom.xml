@@ -16,13 +16,9 @@
         <module>urban-common</module>
         <module>urban-app-mtce</module>
 
-        <module>urban-cas</module>
         <module>urban-cas-spring-boot-starter</module>
-        <module>urban-cas-spring-boot-autoconfigure</module>
-
-        <module>urban-minio</module>
         <module>urban-minio-spring-boot-starter</module>
-        <module>urban-minio-spring-boot-autoconfigure</module>
+
     </modules>
 
 
