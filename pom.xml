@@ -13,12 +13,16 @@
 
 
     <modules>
+        <module>urban-common</module>
+        <module>urban-app-mtce</module>
+
         <module>urban-cas</module>
         <module>urban-cas-spring-boot-starter</module>
         <module>urban-cas-spring-boot-autoconfigure</module>
-        <module>urban-common</module>
-        <module>urban-file</module>
-        <module>urban-app-mtce</module>
+
+        <module>urban-minio</module>
+        <module>urban-minio-spring-boot-starter</module>
+        <module>urban-minio-spring-boot-autoconfigure</module>
     </modules>
 
 
@@ -44,6 +48,7 @@
         <os-maven-plugin.version>1.7.0</os-maven-plugin.version>
         <guava.version>30.0-jre</guava.version>
         <fastdfs-client.version>1.27.2</fastdfs-client.version>
+        <minio.version>8.5.8</minio.version>
     </properties>
 
     <dependencyManagement>
@@ -131,6 +136,12 @@
                 <groupId>com.github.tobato</groupId>
                 <artifactId>fastdfs-client</artifactId>
                 <version>${fastdfs-client.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
             </dependency>
 
         </dependencies>

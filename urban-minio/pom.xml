@@ -10,7 +10,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>urban-file</artifactId>
+    <artifactId>urban-minio</artifactId>
 
     <dependencies>
         <dependency>
@@ -20,9 +20,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.tobato</groupId>
-            <artifactId>fastdfs-client</artifactId>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
         </dependency>
+
     </dependencies>
 
 
