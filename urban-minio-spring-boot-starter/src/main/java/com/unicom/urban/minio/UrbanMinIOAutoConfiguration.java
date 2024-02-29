@@ -1,6 +1,7 @@
 package com.unicom.urban.minio;
 
 import com.unicom.urban.common.constant.SysConstants;
+import com.unicom.urban.common.util.StringUtils;
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -25,10 +26,12 @@ public class UrbanMinIOAutoConfiguration {
 
     @Bean
     public MinioClient minioClient() {
-        return MinioClient.builder()
-                .endpoint(urbanMinIOProperties.getEndpoint(), urbanMinIOProperties.getPort(), urbanMinIOProperties.isSecure())
-                .credentials(urbanMinIOProperties.getAccessKey(), urbanMinIOProperties.getSecretKey())
-                .build();
+        MinioClient.Builder builder = MinioClient.builder().endpoint(urbanMinIOProperties.getEndpoint(), urbanMinIOProperties.getPort(), urbanMinIOProperties.getSecure());
+        if (StringUtils.hasText(urbanMinIOProperties.getAccessKey()) && StringUtils.hasText(urbanMinIOProperties.getSecretKey())) {
+            return builder.credentials(urbanMinIOProperties.getAccessKey(), urbanMinIOProperties.getSecretKey()).build();
+        } else {
+            return builder.build();
+        }
     }
 
 

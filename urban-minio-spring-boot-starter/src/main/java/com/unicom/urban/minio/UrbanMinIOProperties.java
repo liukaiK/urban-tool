@@ -10,11 +10,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "urban.minio")
 public class UrbanMinIOProperties implements InitializingBean {
 
-    private String endpoint;
+    private String endpoint = "127.0.0.1";
 
-    private int port;
+    private Integer port = 9000;
 
-    private boolean secure;
+    private Boolean secure = false;
 
     private String accessKey;
 
@@ -22,7 +22,6 @@ public class UrbanMinIOProperties implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
     }
 
 }
