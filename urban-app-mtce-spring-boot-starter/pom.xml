@@ -10,7 +10,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>urban-app-mtce</artifactId>
+    <artifactId>urban-app-mtce-spring-boot-starter</artifactId>
     <description>封装一些对接应用维护的公共类</description>
 
     <dependencies>
@@ -43,10 +43,14 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-openfeign-core</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

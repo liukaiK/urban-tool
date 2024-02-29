@@ -2,6 +2,7 @@ package com.unicom.urban.appmtce.boot;
 
 import com.unicom.urban.appmtce.common.LoginRequestInterceptor;
 import com.unicom.urban.appmtce.properties.UrbanAppMtceProperties;
+import com.unicom.urban.appmtce.role.RoleFeignClient;
 import com.unicom.urban.appmtce.user.UserFeignClient;
 import com.unicom.urban.common.constant.SysConstants;
 import feign.Feign;
@@ -32,6 +33,13 @@ public class UrbanCasAutoConfiguration {
         return Feign.builder()
                 .requestInterceptor(requestInterceptor())
                 .target(UserFeignClient.class, urbanAppMtceProperties.getHost());
+    }
+
+    @Bean
+    public RoleFeignClient roleFeignClient() {
+        return Feign.builder()
+                .requestInterceptor(requestInterceptor())
+                .target(RoleFeignClient.class, urbanAppMtceProperties.getHost());
     }
 
     public RequestInterceptor requestInterceptor() {

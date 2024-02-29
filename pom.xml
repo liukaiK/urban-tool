@@ -14,8 +14,7 @@
 
     <modules>
         <module>urban-common</module>
-        <module>urban-app-mtce</module>
-
+        <module>urban-app-mtce-spring-boot-starter</module>
         <module>urban-cas-spring-boot-starter</module>
         <module>urban-minio-spring-boot-starter</module>
 
@@ -58,7 +57,7 @@
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>urban-app-mtce</artifactId>
+                <artifactId>urban-app-mtce-spring-boot-starter</artifactId>
                 <version>${revision}</version>
             </dependency>
 
