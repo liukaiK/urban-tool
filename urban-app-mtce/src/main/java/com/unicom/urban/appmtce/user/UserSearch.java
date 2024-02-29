@@ -1,9 +1,16 @@
 package com.unicom.urban.appmtce.user;
 
 import cn.hutool.core.convert.Convert;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collection;
 
+
+@Getter
+@Setter
+@Builder
 public class UserSearch {
 
     private String id;
@@ -54,87 +61,4 @@ public class UserSearch {
         return this.includeSubOrg;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
-    }
-
-    public String getPostId() {
-        return postId;
-    }
-
-    public void setPostId(String postId) {
-        this.postId = postId;
-    }
-
-    public void setRoleCodes(String roleCodes) {
-        this.roleCodes = roleCodes;
-    }
-
-    public String getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(String deleted) {
-        this.deleted = deleted;
-    }
-
-    public Boolean getHasOrg() {
-        return hasOrg;
-    }
-
-    public void setHasOrg(Boolean hasOrg) {
-        this.hasOrg = hasOrg;
-    }
-
-    public Boolean getIncludeSubOrg() {
-        return includeSubOrg;
-    }
-
-    public void setIncludeSubOrg(Boolean includeSubOrg) {
-        this.includeSubOrg = includeSubOrg;
-    }
 }
