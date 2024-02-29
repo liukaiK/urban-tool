@@ -52,24 +52,6 @@
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>urban-cas</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>urban-cas-spring-boot-autoconfigure</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>urban-cas-spring-boot-starter</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>urban-common</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -82,8 +64,14 @@
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>urban-file</artifactId>
+                <artifactId>urban-cas-spring-boot-starter</artifactId>
                 <version>${revision}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>urban-minio-spring-boot-starter</artifactId>
+                <version>${version}</version>
             </dependency>
 
             <dependency>
