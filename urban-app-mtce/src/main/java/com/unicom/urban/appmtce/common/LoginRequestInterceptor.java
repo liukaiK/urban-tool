@@ -19,9 +19,6 @@ public class LoginRequestInterceptor implements RequestInterceptor {
     @JsonIgnore
     private ObjectMapper objectMapper;
 
-    public LoginRequestInterceptor() {
-    }
-
     public LoginRequestInterceptor(String host, String appKey, String appSecret) {
         this.host = host;
         this.appKey = appKey;
@@ -34,7 +31,7 @@ public class LoginRequestInterceptor implements RequestInterceptor {
         try {
             String body = HttpUtil.createPost(host + "/v1/login").body(objectMapper.writeValueAsString(this)).execute().body();
             AccessToken accessToken = objectMapper.readValue(body, AccessToken.class);
-            request.header(accessToken.getTokenName(), accessToken.getAccessToken());
+            request.header("accessToken", accessToken.getAccessToken());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

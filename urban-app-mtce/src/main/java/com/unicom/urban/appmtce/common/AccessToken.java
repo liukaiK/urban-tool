@@ -2,7 +2,7 @@ package com.unicom.urban.appmtce.common;
 
 public class AccessToken {
 
-    private String tokenName;
+//    private String tokenName;
 
     private String accessToken;
 
@@ -14,12 +14,12 @@ public class AccessToken {
         this.accessToken = accessToken;
     }
 
-    public String getTokenName() {
-        return tokenName;
-    }
+//    public String getTokenName() {
+//        return tokenName;
+//    }
 
-    public void setTokenName(String tokenName) {
-        this.tokenName = tokenName;
-    }
+//    public void setTokenName(String tokenName) {
+//        this.tokenName = tokenName;
+//    }
 
 }
