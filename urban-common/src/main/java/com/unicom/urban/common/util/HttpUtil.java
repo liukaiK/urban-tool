@@ -1,5 +1,7 @@
 package com.unicom.urban.common.util;
 
+import cn.hutool.extra.servlet.ServletUtil;
+
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class HttpUtil {
@@ -25,6 +27,15 @@ public abstract class HttpUtil {
             return true;
         }
         return false;
+    }
+
+
+    public static String getIp(HttpServletRequest request) {
+        String ip = ServletUtil.getClientIP(request);
+        if ("0:0:0:0:0:0:0:1".equals(ip)) {
+            return "127.0.0.1";
+        }
+        return ip;
     }
 
     /**
