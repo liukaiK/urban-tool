@@ -6,14 +6,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import lombok.Getter;
 
 public class LoginRequestInterceptor implements RequestInterceptor {
 
     @JsonIgnore
     private String host;
 
+    @Getter
     private String appKey;
 
+    @Getter
     private String appSecret;
 
     @JsonIgnore

@@ -7,10 +7,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Setter
 @Getter
-@ConfigurationProperties(prefix = "urban.appMtce")
+@ConfigurationProperties(prefix = "urban.app-mtce")
 public class UrbanAppMtceProperties implements InitializingBean {
 
-    private String host;
+    private String url;
 
     private String appKey;
 
