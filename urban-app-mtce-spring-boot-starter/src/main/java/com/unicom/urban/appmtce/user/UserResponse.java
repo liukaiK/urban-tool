@@ -33,6 +33,8 @@ public class UserResponse {
 
     private String roleIds;
 
+    private String roleCodes;
+
     private String roleNames;
 
     private String postId;
