@@ -15,7 +15,15 @@ public class MenuSearch {
 
     private String parentId;
 
+    /**
+     * 可传tree和list
+     */
     private String format;
+
+    /**
+     * 可以传多个，用逗号分割
+     */
+    private String roleCodes;
 
     private String deleted;
 
