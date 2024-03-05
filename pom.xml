@@ -44,6 +44,7 @@
         <guava.version>30.0-jre</guava.version>
         <fastdfs-client.version>1.27.2</fastdfs-client.version>
         <minio.version>8.5.8</minio.version>
+        <commons-io.version>2.15.1</commons-io.version>
     </properties>
 
     <dependencyManagement>
@@ -114,7 +115,11 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.tobato</groupId>
                 <artifactId>fastdfs-client</artifactId>
