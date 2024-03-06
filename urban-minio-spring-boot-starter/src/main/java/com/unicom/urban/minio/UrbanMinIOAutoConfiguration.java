@@ -34,5 +34,10 @@ public class UrbanMinIOAutoConfiguration {
         }
     }
 
+    @Bean
+    public MinIOUpload fileUpload() {
+        return new MinIOUploadImpl(minioClient(), urbanMinIOProperties);
+    }
+
 
 }
