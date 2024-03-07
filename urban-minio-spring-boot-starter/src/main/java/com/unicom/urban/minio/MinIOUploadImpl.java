@@ -46,8 +46,27 @@ public class MinIOUploadImpl implements MinIOUpload {
 
     @Override
     @SneakyThrows
+    public ObjectWriteResponse upload(String bucketName, MultipartFile file) {
+        makeBucket(bucketName);
+        return minioClient.putObject(
+                PutObjectArgs.builder()
+                        .stream(file.getInputStream(), file.getSize(), 50000000)
+                        .contentType(file.getContentType())
+                        .object(rename(file.getOriginalFilename()))
+                        .bucket(bucketName)
+                        .build());
+    }
+
+    @Override
+    @SneakyThrows
     public GetObjectResponse read(String fileName) {
         return minioClient.getObject(GetObjectArgs.builder().bucket(urbanMinIOProperties.getBucket()).object(fileName).build());
+    }
+
+    @Override
+    @SneakyThrows
+    public GetObjectResponse read(String bucketName, String fileName) {
+        return minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build());
     }
 
     private String rename(String originalFilename) {

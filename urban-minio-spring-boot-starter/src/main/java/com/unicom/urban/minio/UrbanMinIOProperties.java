@@ -1,6 +1,5 @@
 package com.unicom.urban.minio;
 
-import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
@@ -25,9 +24,6 @@ public class UrbanMinIOProperties implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if (StrUtil.isEmpty(this.bucket)) {
-            throw new IllegalArgumentException("bucket cannot be null");
-        }
     }
 
 }
