@@ -3,6 +3,7 @@ package com.unicom.urban.appmtce.boot;
 import com.unicom.urban.appmtce.application.ApplicationFeignClient;
 import com.unicom.urban.appmtce.common.LoginRequestInterceptor;
 import com.unicom.urban.appmtce.menu.MenuFeignClient;
+import com.unicom.urban.appmtce.org.OrgFeignClient;
 import com.unicom.urban.appmtce.properties.UrbanAppMtceProperties;
 import com.unicom.urban.appmtce.role.RoleFeignClient;
 import com.unicom.urban.appmtce.user.UserFeignClient;
@@ -74,6 +75,16 @@ public class UrbanAppMtceAutoConfiguration {
                 .contract(contract)
                 .requestInterceptor(loginRequestInterceptor())
                 .target(ApplicationFeignClient.class, urbanAppMtceProperties.getUrl());
+    }
+
+    @Bean
+    public OrgFeignClient orgFeignClient(Encoder encoder, Decoder decoder, Contract contract) {
+        return Feign.builder()
+                .encoder(encoder)
+                .decoder(decoder)
+                .contract(contract)
+                .requestInterceptor(loginRequestInterceptor())
+                .target(OrgFeignClient.class, urbanAppMtceProperties.getUrl());
     }
 
 
