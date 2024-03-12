@@ -2,6 +2,7 @@ package com.unicom.urban.appmtce.menu;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,6 +37,7 @@ public class MenuResponse {
 
     private String componentPath;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Collection<MenuResponse> children;
 
     @JsonFormat(pattern = DatePattern.NORM_DATETIME_PATTERN)
