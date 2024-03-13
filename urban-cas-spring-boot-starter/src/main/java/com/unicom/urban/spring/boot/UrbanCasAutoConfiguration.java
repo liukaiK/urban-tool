@@ -84,7 +84,7 @@ public class UrbanCasAutoConfiguration {
                 .authorizeRequests()
                 .anyRequest().authenticated()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher(CAS_LOGOUT_URL, HttpMethod.GET.name())).logoutSuccessUrl(urbanCasProperties.getTicketUrl() + "/logout").addLogoutHandler(casLogoutHandler)
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher(CAS_LOGOUT_URL)).logoutSuccessUrl(urbanCasProperties.getLogoutUrl()).addLogoutHandler(casLogoutHandler)
                 .and()
                 .csrf().disable()
                 .addFilterBefore(casAuthenticationFilter(), RequestCacheAwareFilter.class)

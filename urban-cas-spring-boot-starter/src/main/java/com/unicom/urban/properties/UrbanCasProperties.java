@@ -34,7 +34,7 @@ public class UrbanCasProperties implements InitializingBean {
     /**
      * cas的退出地址 例如：http://127.0.0.1:8080/cas/logout
      */
-//    private String logoutUrl;
+    private String logoutUrl;
 
     /**
      * 认证成功之后的跳转地址
