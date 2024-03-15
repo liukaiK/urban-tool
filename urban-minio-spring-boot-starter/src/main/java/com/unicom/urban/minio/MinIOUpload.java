@@ -15,6 +15,8 @@ public interface MinIOUpload {
 
     ObjectWriteResponse upload(String bucketName, MultipartFile file);
 
+    ObjectWriteResponse update(String bucketName, String fileName, MultipartFile file);
+
     @Deprecated
     GetObjectResponse read(String fileName);
 

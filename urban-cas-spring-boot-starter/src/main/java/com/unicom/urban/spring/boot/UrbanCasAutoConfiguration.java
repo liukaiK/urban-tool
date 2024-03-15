@@ -79,7 +79,9 @@ public class UrbanCasAutoConfiguration {
     public SecurityFilterChain urbanCasSecurityFilterChain(HttpSecurity http) throws Exception {
         http
                 .requestMatchers()
-                .antMatchers(HttpMethod.GET, SecurityConstant.REDIRECT_URL, URBAN_CAS_FILTER_PROCESSES_URL, CAS_LOGOUT_URL)
+                .antMatchers(HttpMethod.GET, SecurityConstant.REDIRECT_URL, URBAN_CAS_FILTER_PROCESSES_URL)
+                // logout请求不要区分GET和POST GET请求用来往CAS跳转，POST请求用来接受CAS退出的回调请求
+                .antMatchers(CAS_LOGOUT_URL)
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
