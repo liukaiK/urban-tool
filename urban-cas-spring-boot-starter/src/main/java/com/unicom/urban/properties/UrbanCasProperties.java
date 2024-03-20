@@ -46,6 +46,9 @@ public class UrbanCasProperties implements InitializingBean {
         if (!StringUtils.hasText(this.loginUrl)) {
             this.loginUrl = this.ticketUrl + "/login";
         }
+        if (!StringUtils.hasText(this.logoutUrl)) {
+            throw new IllegalArgumentException("CAS的logout-url属性不能为空");
+        }
     }
 
 }
