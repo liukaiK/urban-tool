@@ -147,18 +147,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
@@ -199,14 +187,14 @@
 
     <distributionManagement>
         <repository>
-            <id>maven-public</id>
-            <name>maven-release</name>
-            <url>http://maven.cuii.local:43690/repository/maven-releases/</url>
+            <id>rdc-releases</id>
+            <name>rdc-release</name>
+            <url>https://packages.aliyun.com/maven/repository/2460727-release-wNLG8p/</url>
         </repository>
         <snapshotRepository>
-            <id>maven-snapshot</id>
-            <name>maven-snapshot</name>
-            <url>http://maven.cuii.local:43690/repository/maven-snapshots/</url>
+            <id>rdc-snapshots</id>
+            <name>rdc-snapshot</name>
+            <url>https://packages.aliyun.com/maven/repository/2460727-snapshot-KZDThM/</url>
         </snapshotRepository>
     </distributionManagement>
 
