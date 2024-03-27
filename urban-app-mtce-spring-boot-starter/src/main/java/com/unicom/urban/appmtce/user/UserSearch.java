@@ -15,6 +15,8 @@ public class UserSearch {
 
     private String id;
 
+    private String ids;
+
     private String name;
 
     private String username;
