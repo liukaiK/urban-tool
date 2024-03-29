@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.util.Assert;
 
 @Setter
 @Getter
@@ -46,9 +47,7 @@ public class UrbanCasProperties implements InitializingBean {
         if (!StringUtils.hasText(this.loginUrl)) {
             this.loginUrl = this.ticketUrl + "/login";
         }
-        if (!StringUtils.hasText(this.logoutUrl)) {
-            throw new IllegalArgumentException("CAS的logout-url属性不能为空");
-        }
+        Assert.hasText(this.logoutUrl, "CAS的logout-url属性不能为空");
     }
 
 }
