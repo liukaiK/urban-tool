@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * @author liukai
  */
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MobileNumberConstraintValidator.class)
 public @interface MobileNumber {
