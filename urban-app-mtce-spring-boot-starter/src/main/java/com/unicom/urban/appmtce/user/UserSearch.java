@@ -27,6 +27,8 @@ public class UserSearch {
 
     private String orgId;
 
+    private String orgCode;
+
     private String postId;
 
     private String roleCodes;
