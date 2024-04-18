@@ -27,5 +27,6 @@ public class OrgSearch {
 
     private String status;
 
+    private boolean fetchUser;
 
 }

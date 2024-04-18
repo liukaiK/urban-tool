@@ -2,11 +2,13 @@ package com.unicom.urban.appmtce.org;
 
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.unicom.urban.appmtce.user.UserResponse;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,6 +29,8 @@ public class OrgResponse {
     private String status;
 
     private String statusValue;
+
+    private List<UserResponse> users;
 
     private Collection<OrgResponse> children;
 
