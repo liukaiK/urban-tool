@@ -3,8 +3,8 @@ stages:          # List of stages for jobs, and their order of execution
 
 deploy-job:       # This job runs in the build stage, which runs first.
   stage: deploy
-  image: maven:3.6.3-openjdk-8
   script:
-    - mvn clean deploy -Dmaven.test.skip=true -Dusername='66011b019ee3abacd306e4c5' -Dpassword='9iPOb(f=wAOE'
-
+    - mvn clean deploy
+  tags:
+    - node2
 
