@@ -21,14 +21,14 @@ stages:          # List of stages for jobs, and their order of execution
   - test
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
+deploy-job:       # This job runs in the build stage, which runs first.
+  stage: deploy
+  image: maven:3.6.3-openjdk-8
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
-    - mvn clean package -Dmaven.test.skip=true
-  tags:
-    - node2
+    - mvn clean deploy -Dmaven.test.skip=true
+
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
