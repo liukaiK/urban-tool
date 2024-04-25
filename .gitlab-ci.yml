@@ -2,7 +2,26 @@ default:
   interruptible: true
 
 stages:
+  - sonarqube-check
   - deploy
+
+sonarqube-check:
+  stage: sonarqube-check
+  script: 
+    - mvn clean verify sonar:sonar \
+      -Dsonar.projectKey=urban-common \
+      -Dsonar.projectName='urban-common' \
+      -Dsonar.host.url=http://106.13.37.193:9000/ \
+      -Dsonar.token=sqp_a202bfd5be88d3718c6210e6e37fbecc928c0940
+  allow_failure: true
+  only:
+    - merge_requests
+    - master
+    - main
+    - develop
+  tags:
+    - node2
+
 
 deploy-job:
   stage: deploy
