@@ -1,10 +1,19 @@
-stages:          # List of stages for jobs, and their order of execution
+default:
+  interruptible: true
+
+stages:
   - deploy
 
-deploy-job:       # This job runs in the build stage, which runs first.
+deploy-job:
   stage: deploy
   script:
     - mvn clean deploy
+  artifacts:
+    untracked: false
+    when: on_success
+    expire_in: 30 days
+    paths:
+      - "urban-common/target/*.jar"
   tags:
     - node2
 
