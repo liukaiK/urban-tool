@@ -4,10 +4,13 @@ public class SysConstants {
 
     public static final String BASE_PACKAGE = "com.unicom.urban";
 
+    @Deprecated
     public static final String DELETED_FILED = "deleted";
 
+    @Deprecated
     public static final long DELETED_VALUE = 0;
 
+    @Deprecated
     public static final String WHERE_DELETE = DELETED_FILED + "=" + DELETED_VALUE;
 
     public static final String SNOW_CLASS = BASE_PACKAGE + ".common.id.SnowIdGenerator";
