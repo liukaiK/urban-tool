@@ -5,7 +5,10 @@ import eu.bitwalker.useragentutils.UserAgent;
 
 import javax.servlet.http.HttpServletRequest;
 
-public abstract class HttpUtil {
+public class HttpUtil {
+
+    private HttpUtil() {
+    }
 
     public static boolean isAjaxRequest(HttpServletRequest request) {
         String accept = request.getHeader("accept");
@@ -24,10 +27,7 @@ public abstract class HttpUtil {
         }
 
         String ajax = request.getParameter("__ajax");
-        if (inStringIgnoreCase(ajax, "json", "xml")) {
-            return true;
-        }
-        return false;
+        return inStringIgnoreCase(ajax, "json", "xml");
     }
 
     /**
