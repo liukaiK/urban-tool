@@ -22,6 +22,9 @@
 
 
     <properties>
+        <sonar.projectKey>urban_urban-tool_AY9mVY4SDyfa1s94wNzY</sonar.projectKey>
+        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+
         <revision>1.0-SNAPSHOT</revision>
         <timestamp>${maven.build.timestamp}</timestamp>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
